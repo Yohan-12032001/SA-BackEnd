@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="adm">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nchar" MaxLength="10" />
+    <Property Name="senha" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Agendamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cpf" Type="varchar" MaxLength="11" />
+    <Property Name="data" Type="date" />
+    <Property Name="hora" Type="time" Precision="7" />
+    <Property Name="telefone" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityContainer Name="SaModelStoreContainer">
+    <EntitySet Name="adm" EntityType="Self.adm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Agendamento" EntityType="Self.Agendamento" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
