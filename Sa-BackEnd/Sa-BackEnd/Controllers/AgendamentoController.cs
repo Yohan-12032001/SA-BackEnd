@@ -23,13 +23,31 @@ namespace Sa_BackEnd.Controllers
 
         // GET: api/Agendamento/5
         public string Get(int id)
-        {
+        {   
+
             return "value";
         }
 
         // POST: api/Agendamento
         public string Post([FromBody]Agendamento agend)
         {
+            var horaMin = new TimeSpan(10, 0, 0);
+            var horaMax = new TimeSpan(18, 0, 0);
+
+            var horarioConsulta = agend.hora;
+
+            if(horarioConsulta > horaMax || horarioConsulta < horaMin){
+                return "Horario invalido";
+            }
+
+            var agendamentos = bd.Agendamento.ToList();
+
+            bool ExisteAgendamentoDia = agendamentos.Any(x => x.data == agend.data);
+
+            if(ExisteAgendamentoDia){
+                return "Já existe uma consulta neste horario";
+            }
+
             bd.Agendamento.Add(agend);
             bd.SaveChanges();
             return "Salvo com Sucesso";
