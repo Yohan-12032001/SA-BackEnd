@@ -178,7 +178,7 @@
     <Compile Include="Models\adm.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Agendamento.cs">
+    <Compile Include="Models\Agendamento2.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
