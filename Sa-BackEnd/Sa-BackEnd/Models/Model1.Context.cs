@@ -13,10 +13,10 @@ namespace Sa_BackEnd.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SaEntities : DbContext
+    public partial class SaEntities1 : DbContext
     {
-        public SaEntities()
-            : base("name=SaEntities")
+        public SaEntities1()
+            : base("name=SaEntities1")
         {
         }
     
@@ -26,6 +26,6 @@ namespace Sa_BackEnd.Models
         }
     
         public virtual DbSet<adm> adm { get; set; }
-        public virtual DbSet<Agendamento> Agendamento { get; set; }
+        public virtual DbSet<Agendamento2> Agendamento2 { get; set; }
     }
 }

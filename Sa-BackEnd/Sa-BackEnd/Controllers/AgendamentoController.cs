@@ -12,12 +12,13 @@ namespace Sa_BackEnd.Controllers
     [EnableCors(origins:"http://localhost:8080", headers:"*",methods:"*")]
     public class AgendamentoController : ApiController
     {
-        SaEntities bd = new SaEntities();
+        SaEntities1 bd = new SaEntities1();
         // GET: api/Agendamento
         public IEnumerable<dynamic> Get()
         {
-            var datas = from agend in bd.Agendamento
-                        select new { agend.cpf, agend.data, agend.hora };
+            var datas = from agend in bd.Agendamento2
+                        select new { agend.cpf,agend.hora, agend.telefone, agend.data, agend.nome};
+                       
             return datas;
         }
 
@@ -29,7 +30,7 @@ namespace Sa_BackEnd.Controllers
         }
 
         // POST: api/Agendamento
-        public string Post([FromBody]Agendamento agend)
+        public string Post([FromBody]Agendamento2 agend)
         {
             var horaMin = new TimeSpan(10, 0, 0);
             var horaMax = new TimeSpan(18, 0, 0);
@@ -40,7 +41,7 @@ namespace Sa_BackEnd.Controllers
                 return "Horario invalido";
             }
 
-            var agendamentos = bd.Agendamento.ToList();
+            var agendamentos = bd.Agendamento2.ToList();
 
             bool ExisteAgendamentoDia = agendamentos.Any(x => x.data == agend.data);
 
@@ -48,15 +49,15 @@ namespace Sa_BackEnd.Controllers
                 return "Já existe uma consulta neste horario";
             }
 
-            bd.Agendamento.Add(agend);
+            bd.Agendamento2.Add(agend);
             bd.SaveChanges();
             return "Salvo com Sucesso";
         }
 
         // PUT: api/Agendamento/5
-        public string Put(int id, [FromBody]Agendamento agend)
+        public string Put(int id, [FromBody]Agendamento2 agend)
         {
-            Agendamento alterar = bd.Agendamento.Find(id);
+            Agendamento2 alterar = bd.Agendamento2.Find(id);
             alterar.data = agend.data;
             alterar.hora = agend.hora;
             alterar.telefone = agend.telefone;
@@ -68,7 +69,7 @@ namespace Sa_BackEnd.Controllers
         // DELETE: api/Agendamento/5
         public string Delete(int id)
         {
-            bd.Agendamento.Remove(bd.Agendamento.Find(id));
+            bd.Agendamento2.Remove(bd.Agendamento2.Find(id));
             bd.SaveChanges();
             return "Deletado com Sucesso";
         }

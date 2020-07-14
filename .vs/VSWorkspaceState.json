@@ -2,11 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\Sa-BackEnd",
-    "\\Sa-BackEnd\\Sa-BackEnd",
-    "\\Sa-BackEnd\\Sa-BackEnd\\Controllers",
-    "\\Sa-BackEnd\\Sa-BackEnd\\fonts",
-    "\\Sa-BackEnd\\Sa-BackEnd\\Models"
+    "\\Sa-BackEnd\\Sa-BackEnd"
   ],
-  "SelectedNode": "\\Sa-BackEnd\\Sa-BackEnd\\Controllers\\AgendamentoController.cs",
   "PreviewInSolutionExplorer": false
 }

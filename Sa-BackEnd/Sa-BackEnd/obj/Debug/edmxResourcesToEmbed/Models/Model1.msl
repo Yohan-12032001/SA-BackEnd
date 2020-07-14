@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SaModelStoreContainer" CdmEntityContainer="SaEntities">
+  <EntityContainerMapping StorageEntityContainer="SaModelStoreContainer" CdmEntityContainer="SaEntities1">
     <EntitySetMapping Name="adm">
       <EntityTypeMapping TypeName="SaModel.adm">
         <MappingFragment StoreEntitySet="adm">
@@ -10,14 +10,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Agendamento">
-      <EntityTypeMapping TypeName="SaModel.Agendamento">
-        <MappingFragment StoreEntitySet="Agendamento">
+    <EntitySetMapping Name="Agendamento2">
+      <EntityTypeMapping TypeName="SaModel.Agendamento2">
+        <MappingFragment StoreEntitySet="Agendamento2">
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
           <ScalarProperty Name="cpf" ColumnName="cpf" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
           <ScalarProperty Name="data" ColumnName="data" />
           <ScalarProperty Name="hora" ColumnName="hora" />
-          <ScalarProperty Name="telefone" ColumnName="telefone" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

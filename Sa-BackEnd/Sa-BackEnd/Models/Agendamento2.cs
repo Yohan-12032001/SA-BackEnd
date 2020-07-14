@@ -12,12 +12,13 @@ namespace Sa_BackEnd.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Agendamento
+    public partial class Agendamento2
     {
         public int id { get; set; }
+        public string nome { get; set; }
         public string cpf { get; set; }
+        public string telefone { get; set; }
         public Nullable<System.DateTime> data { get; set; }
         public Nullable<System.TimeSpan> hora { get; set; }
-        public string telefone { get; set; }
     }
 }

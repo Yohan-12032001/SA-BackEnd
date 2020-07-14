@@ -8,18 +8,19 @@
     <Property Name="nome" Type="nchar" MaxLength="10" />
     <Property Name="senha" Type="char" MaxLength="10" />
   </EntityType>
-  <EntityType Name="Agendamento">
+  <EntityType Name="Agendamento2">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="cpf" Type="varchar" MaxLength="11" />
+    <Property Name="nome" Type="nchar" MaxLength="20" />
+    <Property Name="cpf" Type="nchar" MaxLength="20" />
+    <Property Name="telefone" Type="nchar" MaxLength="20" />
     <Property Name="data" Type="date" />
     <Property Name="hora" Type="time" Precision="7" />
-    <Property Name="telefone" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityContainer Name="SaModelStoreContainer">
     <EntitySet Name="adm" EntityType="Self.adm" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Agendamento" EntityType="Self.Agendamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Agendamento2" EntityType="Self.Agendamento2" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>
