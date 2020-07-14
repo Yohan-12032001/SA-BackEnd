@@ -33,8 +33,18 @@ namespace Sa_BackEnd.Controllers
         public dynamic Post([FromBody]adm value)
         {
             SaEntities1 bd = new SaEntities1();
-                
-            var login=bd.adm.FirstOrDefault(x => x.nome == && x.senha == string.senha);
+
+            var login = bd.adm.FirstOrDefault(x => x.nome == value.nome && x.senha == value.senha);
+
+            if (login == null)
+            {
+                return "Wrong Login!";
+            }
+            else
+            {
+                return true;
+            }
+
         }
 
         // PUT: api/Admin/5
