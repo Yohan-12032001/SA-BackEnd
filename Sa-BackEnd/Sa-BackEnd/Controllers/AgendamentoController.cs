@@ -19,14 +19,11 @@ namespace Sa_BackEnd.Controllers
         // GET: api/Agendamento
         public IEnumerable<dynamic> Get()
         {
-<<<<<<< HEAD
+
             var datas = from agend in bd.Agendamento2
                         select new { agend.cpf,agend.hora, agend.telefone, agend.data, agend.nome};
                        
-=======
-            var datas = from agend in bd.Agendamento
-                        select new {agend.cpf, agend.data, agend.hora, agend.telefone };
->>>>>>> bee681380a052da0bc520e2640ab806158b55c9a
+
             return datas;
         }
 
@@ -38,14 +35,12 @@ namespace Sa_BackEnd.Controllers
         }
 
         // POST: api/Agendamento
-<<<<<<< HEAD
+
         public string Post([FromBody]Agendamento2 agend)
-=======
-        public string Post([FromBody] Agendamento agend)
->>>>>>> bee681380a052da0bc520e2640ab806158b55c9a
+
         {
 
-            var agendamentos = bd.Agendamento.ToList();
+            var agendamentos = bd.Agendamento2.ToList();
             bool ExisteAgendamentoDia = agendamentos.Any(x => x.data == agend.data);
             var horaMin = new TimeSpan(10, 0, 0);
             var horaMax = new TimeSpan(18, 0, 0);
@@ -56,29 +51,21 @@ namespace Sa_BackEnd.Controllers
                 return "Horario invalido";
             }
 
-<<<<<<< HEAD
-            var agendamentos = bd.Agendamento2.ToList();
-=======
-            if (ExisteAgendamentoDia) {
-                return "Já existe uma consulta neste horario";
-            }
->>>>>>> bee681380a052da0bc520e2640ab806158b55c9a
-
-            if (bd.Agendamento.Sql.Contains(agend.cpf) || ExisteAgendamentoDia)
+            if (bd.Agendamento2.Sql.Contains(agend.cpf) || ExisteAgendamentoDia)
             {
 
                 return "Você Já tem um horario marcado!";
             }
 
-            if (agend.data == null || agend.cpf == null || agend.hora == null || agend.telefone == null)
+
+            if (agend.data == null || agend.cpf == "" || agend.hora == null || agend.telefone == "" || agend.nome=="")
             {
                 return "ta errado isso ae";
             }
 
-<<<<<<< HEAD
+
             bd.Agendamento2.Add(agend);
-=======
->>>>>>> bee681380a052da0bc520e2640ab806158b55c9a
+
             bd.SaveChanges();
             return "Salvo com Sucesso";
         }
@@ -86,10 +73,10 @@ namespace Sa_BackEnd.Controllers
         // PUT: api/Agendamento/5
         public string Put(int id, [FromBody]Agendamento2 agend)
         {
-<<<<<<< HEAD
+
             Agendamento2 alterar = bd.Agendamento2.Find(id);
-=======
-            var agendamentos = bd.Agendamento.ToList();
+
+            var agendamentos = bd.Agendamento2.ToList();
             bool ExisteAgendamentoDia = agendamentos.Any(x => x.data == agend.data);
             var horaMin = new TimeSpan(10, 0, 0);
             var horaMax = new TimeSpan(18, 0, 0);
@@ -106,19 +93,18 @@ namespace Sa_BackEnd.Controllers
                 return "Já existe uma consulta neste horario";
             }
 
-            if (bd.Agendamento.Sql.Contains(agend.cpf) || ExisteAgendamentoDia)
+            if (bd.Agendamento2.Sql.Contains(agend.cpf) || ExisteAgendamentoDia)
             {
 
                 return "Você Já tem um horario marcado!";
             }
 
-            if (agend.data == null || agend.cpf == null || agend.hora == null || agend.telefone == null)
+            if (agend.data == null || agend.cpf == "" || agend.hora == null || agend.telefone == "" || agend.nome=="")
             {
                 return "ta errado isso ae";
             }
 
-            Agendamento alterar = bd.Agendamento.Find(id);
->>>>>>> bee681380a052da0bc520e2640ab806158b55c9a
+           
             alterar.data = agend.data;
             alterar.hora = agend.hora;
             alterar.telefone = agend.telefone;
