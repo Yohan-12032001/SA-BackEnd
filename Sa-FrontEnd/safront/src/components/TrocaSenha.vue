@@ -1,18 +1,35 @@
 <template>
   <div class="TrocaSenha"><br>  
       <b>Nome: </b>
-      <input type="text" placeholder="Digite o Nome" class="nome"><br>
+      <input type="text" placeholder="Digite o Nome" class="nome" v-model="nome"><br>
       <b>Senha Antiga: </b>
-      <input type="password" placeholder="Digite a Senha Antiga"><br>
+      <input type="password" placeholder="Digite a Senha Antiga" v-model="senha"><br>
       <b>Senha Nova: </b>
-      <input type="password" placeholder="Digite a Nova Senha" class="nova"><br>
-      <button>Enviar</button>
+      <input type="password" placeholder="Digite a Nova Senha" class="nova" v-model="newPassword"><br>
+      <button @click="enviar">Enviar</button>
   </div>
 </template>
 
 <script>
+const axios= require('axios')
 export default {
-
+  
+  data:function(){
+    return{
+      nome:'',
+      senha:'',
+      newPassword:'',
+      id:1
+    }
+  },methods:{
+    enviar:function(){
+      axios.put(`https://localhost:44337/api/Admin/${this.id}`,{   
+        nome:this.nome,
+        senha:this.senha,
+        newPassword:this.newPassword
+      }).then(resp=>alert(resp.data))
+    }
+}
 }
 </script>
 

@@ -37,11 +37,10 @@ export default {
     }
  }, methods: {
      data: function(){
-         console.log(this.agendamentos.cpf
-         )
+         console.log(this.agend)
      }
  }, mounted(){
-     axios.get("https://localhost:44337/api/Agendamento").then(agend =>this.agendamentos=agend.data)
+     axios.get("https://localhost:44337/api/Agendamento").then(agend =>this.agendamentos=agend.data)   
  }
 }
 </script>

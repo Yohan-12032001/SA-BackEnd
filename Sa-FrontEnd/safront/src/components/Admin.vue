@@ -1,26 +1,51 @@
 <template>
   <div class="Admin">
+
       <br>
       <b>Nome: </b>
-      <input type="text" placeholder="Nome"><br>
+      <input type="text" placeholder="Nome" v-model="nomeDigit"><br>
       <b>Senha: </b>
-      <input type="password" placeholder="Senha"><br><br>
-      <router-link to="/list" tag="button">Entrar</router-link><br>
-      <router-link to="/tSenha" class="link">Trocar Senha</router-link> 
-      
+      <input type="password" placeholder="Senha" v-model="senhaDigit"><br><br>
 
+      
+      <button @click="Entrar">Entrar</button><br>
+    
+      <router-link to="/tSenha" class="link">Trocar Senha</router-link> <br>
+           
   </div>
 </template>
 
 <script>
+const axios= require('axios')
 export default {
  data: function(){
      return{
+         nomeDigit:'',
+         senhaDigit:'',
 
+  
      }
  }, methods:{
      Ir: function(){
          <router-link to="/tSenha" class="link">Trocar Senha</router-link> 
+     },
+     Entrar:function(){
+         
+         axios.post("https://localhost:44337/api/Admin",{
+             nome:this.nomeDigit,
+             senha:this.senhaDigit
+         }).then(resp=>{
+             if(resp.data==true){
+             window.location.href = "http://localhost:8080/list"
+         }else{
+             alert("Login ou Senha Invalido!!!")
+         }
+         });
+         
+         
+         
+
+         
      }
  }
 }
