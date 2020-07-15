@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Sa_BackEnd.Models;
@@ -48,8 +50,22 @@ namespace Sa_BackEnd.Controllers
         }
 
         // PUT: api/Admin/5
-        public void Put(int id, [FromBody]string value)
+        public dynamic Put(int id, [FromBody]adm value, string newPassword)
         {
+
+            adm alterar = bd.adm.Find(id);
+
+            var verifyAccount = bd.adm.FirstOrDefault(x => x.nome == value.nome && x.senha == value.senha);
+
+            if (verifyAccount != null)
+            {
+                alterar.senha = newPassword;
+                bd.SaveChanges();
+                return "foi ou n carai";
+            }
+            return "senhas incorretas!";
+
+            
         }
 
         // DELETE: api/Admin/5
